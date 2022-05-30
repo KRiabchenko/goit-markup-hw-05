@@ -13,6 +13,7 @@
     --secondary-bgc-color: #F5F4FA;
     --hero-bgc-color: #2F303A;
     --white-color: #ffffff;
+    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -114,6 +115,8 @@ body {
     letter-spacing: 0.06em;
     cursor: pointer;
     text-align: center;
+
+    transition: color 250ms var(--timing-function);
 }
 
 .button.link:hover,
@@ -161,7 +164,7 @@ align-items: center;
     margin-left: 50px;
 }
 
-.site-nav .link {
+.site-nav-link {
      display: block;
      padding-top: 32px;
      padding-bottom: 32px;
@@ -173,15 +176,18 @@ align-items: center;
     line-height: 1.14;
     letter-spacing: 0.02em;
     text-decoration: none;
+
+    transition: color 250ms var(--timing-function);
 }
 
-.site-nav .link:hover,
-.site-nav .link:focus {
+.site-nav-link:hover,
+.site-nav-link:focus {
     color: var(--accent-color);
 }
 
-.site-nav .link.current {
+.site-nav-link.current {
     position: relative;
+
     font-weight: 500;
     font-size: 14px;
     line-height: 1.14;
@@ -194,10 +200,12 @@ align-items: center;
 .current::before {
     position: absolute;
     content: "";
+
     bottom: -1px;
     width: 100%;
     height: 4px;
     border-radius: 2px;
+
     background-color: var(--accent-color);
 }
 
@@ -462,6 +470,9 @@ align-items: center;
     align-items: center;
     border-radius: 50%;
     fill: #AFB1B8;
+
+    transition: background-color 250ms var(--timing-function),
+    fill 250ms var(--timing-function);
 }  
 
 .command-social-item + .command-social-item {
@@ -507,6 +518,9 @@ align-items: center;
     height: 92px;
     border: 1px solid #AFB1B8;
     border-radius: 4px;
+
+    transition: border-color 250ms var(--timing-function),
+    fill 250ms var(--timing-function);
 }
 .clients-icon {
     width: 106px;
@@ -559,6 +573,8 @@ align-items: center;
     line-height: 1.71;
     letter-spacing: 0.03em;
     text-decoration: none;
+
+    transition: color 250ms var(--timing-function);
 }
 
 .footer-nav .link:hover,
@@ -623,6 +639,8 @@ align-items: center;
     border-radius: 50%;
     fill: var(--white-color);
     background-color: rgba(255, 255, 255, 0.1);
+    
+    transition: background-color 250ms var(--timing-function);
 }
 
 .social-link:hover,
@@ -671,6 +689,8 @@ align-items: center;
     margin-bottom: 30px;
 
     border: 1px solid #EEEEEE;
+
+    transition: box-shadow 250ms var(--timing-function);
 }
 
 .foto-elements:hover {
@@ -689,23 +709,36 @@ align-items: center;
 }
 
 .foto-action {
-    position: relative
+    position: relative;
+
+    overflow: hidden ;
+
+    transition: background-color 250ms var(--timing-function);
 }
 
-.foto-action::before {
-    display: inline-block;
+.foto-overlay {
     position: absolute;
-    content: "";
+    top: 0;
+    left: 0;
+    
     width: 100%;
     height: 100%;
+
     opacity: 0;
 
+    transform: translateY(100%);
+    transition: transform 250ms var(--timing-function),
+    opacity 250ms var(--timing-function);
+    
     background-color: rgba(33, 150, 243, 0.9);
+
 }
 
-.foto-action:hover::before {
+.foto-action:hover .foto-overlay {
+    transform: translateY(0);
     opacity: 1;
 }
+
 
 .foto-action-text {
     position: absolute;
@@ -713,18 +746,14 @@ align-items: center;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 320px;
-    opacity: 0;
+
 
     font-weight: 400;
     font-size: 18px;
     line-height: 1.56;
     letter-spacing: 0.03em;
     
-    color: var(--white-color);
-}
-
-.foto-action-text:hover {
-    opacity: 1;
+    color: #FFFFFF;
 }
 
 /* ------------------- PORTFOLIO BUTTONS --------------- */
@@ -744,6 +773,11 @@ align-items: center;
     letter-spacing: 0.03em;
     cursor: pointer;
     border-radius: 4px;
+
+    transition: 
+    color 250ms var(--timing-function),
+    background-color 250ms var(--timing-function),
+    box-shadow 250ms var(--timing-function);
 }
 
 .button-portfolio.link:hover,
